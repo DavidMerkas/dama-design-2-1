@@ -14,6 +14,19 @@ mmenu.querySelectorAll('a').forEach(a=>a.onclick=()=>mmenu.classList.remove('ope
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rev').forEach(el=>io.observe(el));
 
+/* ============ HERO SLIDER ============ */
+(function(){
+  const slides=[...document.querySelectorAll('.hero-slider .hero-img')];
+  if(slides.length<2)return;
+  let i=slides.findIndex(s=>s.classList.contains('active'));
+  if(i<0)i=0;
+  setInterval(()=>{
+    slides[i].classList.remove('active');
+    i=(i+1)%slides.length;
+    slides[i].classList.add('active');
+  },6000);
+})();
+
 /* ============ STAT COUNTERS ============ */
 (function(){
   const nums=[...document.querySelectorAll('.stat .n[data-count]')];
