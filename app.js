@@ -109,7 +109,7 @@ if(gEls.length){
     const img=card.querySelector('img');
     const ph=document.createElement('span');
     ph.className='ph-in';
-    card.insertBefore(ph,img);
+    img.parentNode.insertBefore(ph,img);
     ph.appendChild(img);
     return ph;
   });

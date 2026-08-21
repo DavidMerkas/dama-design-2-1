@@ -10,7 +10,7 @@
   --dark:#161616;
   --sans:"Switzer",-apple-system,"Segoe UI",sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
-  --pad:48px;
+  --pad:40px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -41,7 +41,7 @@ h1,h2,h3,h4{font-weight:300;line-height:1.04;letter-spacing:.005em}
 .nav-l,.nav-r{display:flex;gap:34px}
 .nav-l{order:1;margin-left:auto}
 .nav-r{order:2}
-.nav-l a,.nav-r a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:400;position:relative;padding:6px 0;white-space:nowrap}
+.nav-l a,.nav-r a{font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);font-weight:600;position:relative;padding:6px 0;white-space:nowrap}
 .nav-l a::after,.nav-r a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
 .nav-l a:hover::after,.nav-r a:hover::after{transform:scaleX(1);transform-origin:left}
 .logo .name{font-size:26px;font-weight:200;letter-spacing:.14em;line-height:1}
@@ -144,14 +144,14 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
 .feature .txt .tlink{color:#fff;margin-top:26px;align-self:flex-start}
 
 /* ============ STATS ============ */
-.stats{display:grid;grid-template-columns:repeat(3,1fr)}
-.stat{position:relative;padding:80px 30px;text-align:center;border-right:1px solid var(--line-soft);transition-delay:calc(var(--i) * 110ms)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);max-width:900px;margin:0 auto}
+.stat{position:relative;padding:56px 24px;text-align:center;border-right:1px solid var(--line-soft);transition-delay:calc(var(--i) * 110ms)}
 .stat:last-child{border-right:none}
 /* linija koja se crta iznad broja, sinkrono s reveal-om */
 .stat::before{content:"";position:absolute;top:0;left:50%;width:0;height:1px;background:var(--ink);transition:width .9s var(--ease),left .9s var(--ease);transition-delay:calc(var(--i) * 110ms)}
 .stat.in::before{width:34px;left:calc(50% - 17px)}
-.stat .n{font-size:3.4rem;font-weight:300;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.stat .t{font-size:12px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-top:20px}
+.stat .n{font-size:3.4rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.015em;color:var(--ink)}
+.stat .t{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-top:18px}
 .stat .t-note{font-size:11.5px;font-weight:300;letter-spacing:.01em;text-transform:none;color:var(--muted);margin-top:8px}
 
 /* ============ PROJECTS ============ */
@@ -259,10 +259,10 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
 .vswitch .vall:hover{background:transparent;color:#fff}
 
 @media(min-width:1680px){
-  :root{--pad:64px}
+  :root{--pad:54px}
 }
 @media(min-width:1920px){
-  :root{--pad:80px}
+  :root{--pad:68px}
 }
 @media(max-width:1000px){
   :root{--pad:22px}
@@ -300,10 +300,11 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
   position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);
   font-size:clamp(7rem,17vw,15rem);font-weight:700;letter-spacing:-.01em;
   text-transform:uppercase;white-space:nowrap;
-  background-image:var(--bgword-img);background-size:cover;background-position:center 55%;
+  background-image:linear-gradient(rgba(25,21,16,.58),rgba(25,21,16,.58)),var(--bgword-img);
+  background-size:cover;background-position:center 55%;
   -webkit-background-clip:text;background-clip:text;
   color:transparent;-webkit-text-fill-color:transparent;
-  opacity:.9;filter:saturate(.85) contrast(1.05);
+  opacity:.95;filter:saturate(.8) contrast(1.05);
   pointer-events:none;user-select:none;z-index:0;
 }
 .intro-feature .wrap{position:relative;z-index:1}
@@ -335,12 +336,18 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
 }
 
 /* varijanta s fotografijom pogona umjesto flat patterna, za istaknutije mjesto na naslovnoj */
+/* uvučena, zaobljena "kartica" umjesto punog reza od ruba do ruba — mekši prijelaz sa svijetle pozadine */
 .standard.photo{
+  margin:clamp(50px,7vw,90px) var(--pad);
+  border-radius:18px;
   background-image:linear-gradient(180deg,rgba(10,9,8,.82),rgba(10,9,8,.9)),var(--standard-bg-img);
   background-size:cover;background-position:center 42%;
 }
 .standard.photo .grid::before{color:rgba(255,255,255,.1)}
 .standard.photo p{border-top-color:rgba(255,255,255,.22)}
+@media(max-width:700px){
+  .standard.photo{margin:36px var(--pad);border-radius:14px}
+}
 
 .split{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
 .split.flip .txt{order:2}
@@ -604,24 +611,33 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
 .show-head h2{font-size:clamp(1.9rem,3.6vw,3.2rem);font-weight:300;text-transform:uppercase;letter-spacing:.02em}
 .show-head p{max-width:46ch;color:var(--muted);font-weight:300;font-size:15px;line-height:1.6;margin-top:20px}
 .show-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.show-track{display:flex;width:max-content;gap:22px;animation:show-marquee 52s linear infinite}
-.show-card{position:relative;flex:none;height:440px;overflow:hidden;display:block}
+.show-track{display:flex;width:max-content;gap:52px;animation:show-marquee 52s linear infinite}
+.show-card{position:relative;flex:none;display:block}
 .show-card.w-s{width:280px}
 .show-card.w-m{width:380px}
 .show-card.w-l{width:540px}
-/* .ph-in je veći od okvira (overflow:hidden na .show-card ga reže) - JS pomiče .ph-in okomito prema scrollu za parallax/3D dojam, dok hover-zoom ide na img zasebno pa se ne sudaraju */
+.show-card .show-media{display:block;position:relative;height:440px;overflow:hidden;background:var(--line-soft)}
+/* .ph-in je veći od okvira (overflow:hidden na .show-media ga reže) - JS pomiče .ph-in okomito prema scrollu za parallax/3D dojam, dok hover-zoom ide na img zasebno pa se ne sudaraju */
 .show-card .ph-in{position:absolute;left:0;right:0;top:-16%;height:132%;will-change:transform}
 .show-card .ph-in img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--ease)}
-.show-card:hover .ph-in img{transform:scale(1.06)}
-.show-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(10,10,10,.72));opacity:.82;transition:opacity .5s var(--ease)}
-.show-card:hover::before{opacity:1}
-.show-card .cap{position:absolute;left:22px;right:22px;bottom:20px;color:#fff;opacity:1;transform:none}
-.show-card .cap-t{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-weight:400}
-.show-card .cap-l{display:block;margin-top:5px;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.72)}
+.show-card:hover .ph-in img{transform:scale(1.05)}
+.show-card .show-media::after{
+  content:'Saznajte više →';position:absolute;left:18px;bottom:18px;z-index:1;
+  padding:9px 16px;background:rgba(20,18,16,.85);color:#fff;
+  font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:500;
+  border-radius:100px;white-space:nowrap;
+  opacity:0;transform:translateY(8px);
+  transition:opacity .35s var(--ease),transform .35s var(--ease);
+  pointer-events:none;
+}
+.show-card:hover .show-media::after{opacity:1;transform:none}
+.show-card .cap{display:block;margin-top:18px;color:var(--ink)}
+.show-card .cap-t{display:block;font-size:14px;font-weight:500;letter-spacing:.01em;color:var(--ink)}
+.show-card .cap-l{display:block;margin-top:5px;font-size:12px;letter-spacing:.03em;color:var(--muted)}
 @keyframes show-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.show-track{animation:none}}
 @media(max-width:860px){
-  .show-card{height:320px}
+  .show-card .show-media{height:320px}
   .show-card.w-s{width:210px}
   .show-card.w-m{width:280px}
   .show-card.w-l{width:380px}
