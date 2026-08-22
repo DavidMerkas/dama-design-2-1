@@ -128,3 +128,44 @@ if(gEls.length){
   addEventListener('resize',update);
   update();
 })();
+
+/* ============ CTA BACKGROUND ROTATOR (Osmislimo vaš prostor - crossfade kroz nekoliko enterijera) ============ */
+(function(){
+  const pool=[
+    'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1920&q=80',
+    'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1920&q=80',
+    'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1920&q=80',
+    'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1920&q=80',
+    'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=1920&q=80'
+  ];
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  document.querySelectorAll('section.cta').forEach(sec=>{
+    const base=sec.querySelector('img');
+    if(!base)return;
+    const alt=base.cloneNode();
+    alt.removeAttribute('alt');
+    alt.style.opacity='0';
+    alt.style.transition='opacity 1.8s ease';
+    base.style.transition='opacity 1.8s ease';
+    sec.insertBefore(alt,base.nextSibling);
+    let i=Math.max(0,pool.indexOf(base.getAttribute('src')));
+    let front=base,back=alt;
+    setInterval(()=>{
+      i=(i+1)%pool.length;
+      back.src=pool[i];
+      back.style.opacity='1';
+      front.style.opacity='0';
+      [front,back]=[back,front];
+    },6000);
+  });
+})();
+
+/* ============ GRID SPOTLIGHT HOVER (grid3/grid2 dim-ostalih efekt, JS umjesto CSS :hover da gapovi između kartica ne okidaju dim na sve) ============ */
+(function(){
+  document.querySelectorAll('.grid3, .grid2').forEach(grid=>{
+    grid.querySelectorAll(':scope > .tile').forEach(tile=>{
+      tile.addEventListener('mouseenter',()=>{grid.classList.add('hovering');tile.classList.add('hovered')});
+      tile.addEventListener('mouseleave',()=>{grid.classList.remove('hovering');tile.classList.remove('hovered')});
+    });
+  });
+})();

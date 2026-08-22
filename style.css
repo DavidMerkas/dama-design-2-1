@@ -97,8 +97,8 @@ h1,h2,h3,h4{font-weight:300;line-height:1.04;letter-spacing:.005em}
 .btn:hover::before{transform:scaleY(1)}
 .btn:hover{color:#fff;border-color:var(--gold)}
 .btn.inv{border-color:rgba(255,255,255,.5);color:#fff}
-.btn.inv::before{background:#fff}
-.btn.inv:hover{color:var(--ink);border-color:#fff}
+.btn.inv::before{background:var(--gold)}
+.btn.inv:hover{color:#fff;border-color:var(--gold)}
 
 /* ============ INTRO ============ */
 .intro{padding-top:110px;padding-bottom:130px;overflow:hidden}
@@ -124,7 +124,7 @@ h1,h2,h3,h4{font-weight:300;line-height:1.04;letter-spacing:.005em}
 .grid3.fading{opacity:0}
 .tile{cursor:pointer}
 .grid3 .tile,.grid2 .tile{transition:opacity .5s var(--ease),filter .5s var(--ease)}
-.grid3:hover .tile:not(:hover),.grid2:hover .tile:not(:hover){opacity:.5;filter:saturate(.4) blur(1px)}
+.grid3.hovering .tile:not(.hovered),.grid2.hovering .tile:not(.hovered){opacity:.5;filter:saturate(.4) blur(1px)}
 .tile .ph{position:relative;overflow:hidden;aspect-ratio:4/5;background:#e4e2df;border-radius:10px;box-shadow:0 0 0 rgba(20,18,16,0);transition:box-shadow .5s var(--ease)}
 .tile:hover .ph{box-shadow:0 26px 54px rgba(20,18,16,.18)}
 /* .ph-in je viši od okvira - JS ga pomiče okomito prema scrollu (parallax/3D dojam), dok hover-zoom ide na img zasebno */
@@ -264,16 +264,16 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
 .ftr-line .k{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#fff;font-weight:600;padding-top:3px}
 .ftr-line .v{color:rgba(255,255,255,.85)}
 .ftr-line .v a{transition:color .3s}
-.ftr-line .v a:hover{color:#fff}
+.ftr-line .v a:hover{color:var(--gold)}
 .ftr-social{display:flex;gap:22px;margin-top:26px}
 .ftr-social a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);transition:color .3s}
-.ftr-social a:hover{color:#fff}
+.ftr-social a:hover{color:var(--gold)}
 .ftr-pay{display:flex;justify-content:space-between;align-items:center;gap:30px;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.12);flex-wrap:wrap}
 .ftr-pay .note{font-size:12.5px;color:rgba(255,255,255,.42);max-width:62ch;font-weight:300;line-height:1.6}
 .ftr-cards{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .ftr-cards img{height:30px;width:auto}
 .ftr-bot{display:flex;justify-content:space-between;align-items:center;padding-top:30px;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.4);flex-wrap:wrap;gap:12px}
-.ftr-bot a:hover{color:#fff}
+.ftr-bot a:hover{color:var(--gold)}
 
 /* ============ MOBILE MENU ============ */
 .mmenu{position:fixed;inset:0;background:var(--dark);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;transform:translateY(-100%);transition:transform .6s var(--ease);visibility:hidden}
@@ -479,7 +479,7 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
 .chapter.flip{grid-template-columns:1.15fr 1fr}
 .chapter.flip .chap-img{order:2}
 .chapter.flip .chap-txt{order:1}
-.chap-txt .num{display:block;font-size:12px;letter-spacing:.18em;color:var(--gold);font-weight:600;margin-bottom:20px}
+.chap-txt .num{display:block;font-size:clamp(2.6rem,4vw,3.6rem);font-weight:600;line-height:.9;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:transparent;-webkit-text-stroke:1.4px var(--gold);text-stroke:1.4px var(--gold);margin-bottom:22px}
 .chap-txt h3{font-size:clamp(1.5rem,2.4vw,2.1rem);font-weight:400;line-height:1.25;margin-bottom:22px;letter-spacing:-.01em}
 .chap-txt p{color:var(--muted);font-weight:300;font-size:15.5px;line-height:1.85;max-width:52ch}
 .chap-txt .quote{margin-top:26px;padding-left:20px;border-left:2px solid var(--gold);font-size:15px;font-style:italic;color:var(--ink);font-weight:300;max-width:48ch}
