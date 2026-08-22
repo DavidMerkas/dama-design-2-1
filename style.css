@@ -371,7 +371,6 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
 }
 
 .split{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
-.split.flip .txt{order:2}
 .split .img img{width:100%;height:100%;object-fit:cover;min-height:460px}
 .split .txt{padding:96px 6vw;display:flex;flex-direction:column;justify-content:center}
 .split .txt .eyebrow{margin-bottom:22px}
@@ -400,15 +399,19 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
 .split .img.orbit{position:relative;padding:56px 9%;display:flex;align-items:center}
 .split .img.orbit .ph{position:relative;width:100%;height:420px;border-radius:16px;overflow:hidden;box-shadow:0 30px 70px rgba(20,18,16,.18)}
 .split .img.orbit .ph img{width:100%;height:100%;object-fit:cover;min-height:0}
-.fbadge{position:absolute;z-index:2;display:inline-flex;align-items:center;gap:10px;background:#fff;padding:13px 18px;border-radius:100px;box-shadow:0 16px 34px rgba(20,18,16,.16);font-size:13px;font-weight:500;letter-spacing:.01em;color:var(--ink);white-space:nowrap;animation:fbob 6s ease-in-out infinite}
+.fbadge{position:absolute;z-index:2;display:inline-flex;align-items:center;gap:10px;background:#fff;padding:13px 18px;border-radius:100px;box-shadow:0 16px 34px rgba(20,18,16,.16);font-size:13px;font-weight:500;letter-spacing:.01em;color:var(--ink);white-space:nowrap;animation:fbob 6s ease-in-out infinite;cursor:default}
 .fbadge .ic{width:20px;height:20px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;flex:none;font-size:11px;font-weight:700}
+.fbadge::after{content:attr(data-detail);position:absolute;left:50%;bottom:calc(100% + 14px);transform:translateX(-50%) translateY(6px);width:max-content;max-width:220px;white-space:normal;text-align:left;background:var(--ink);color:#fff;font-size:11.5px;font-weight:400;letter-spacing:.01em;line-height:1.55;padding:11px 15px;border-radius:10px;box-shadow:0 18px 36px rgba(20,18,16,.24);opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:6}
+.fbadge::before{content:"";position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ink);opacity:0;transition:opacity .3s var(--ease);pointer-events:none;z-index:6}
+.fbadge:hover,.fbadge:focus-visible{animation-play-state:paused;z-index:7}
+.fbadge:hover::after,.fbadge:focus-visible::after,.fbadge.show-detail::after{opacity:1;transform:translateX(-50%) translateY(0)}
+.fbadge:hover::before,.fbadge:focus-visible::before,.fbadge.show-detail::before{opacity:1}
 .fb1{top:6%;left:2%;animation-delay:0s}
 .fb2{top:28%;right:0;animation-delay:1.5s}
 .fb3{bottom:16%;left:0;animation-delay:3s}
 .fb4{bottom:2%;right:8%;animation-delay:4.5s}
 @keyframes fbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 @media(prefers-reduced-motion:reduce){.fbadge{animation:none}}
-.checks-mobile{display:none}
 @media(max-width:1000px){
   .split .img.orbit{padding:20px 8px 44px}
   .split .img.orbit .ph{height:340px}
@@ -462,7 +465,7 @@ html[lang="en"] .proj-item .ph::after{content:"View project"}
 .map{margin-top:20px;border:1px solid var(--line);aspect-ratio:16/7;width:100%;filter:grayscale(1) contrast(1.05)}
 
 @media(max-width:1000px){
-  .split{grid-template-columns:1fr}.split .txt{padding:60px 22px}.split.flip .txt{order:0}
+  .split{grid-template-columns:1fr}.split .txt{padding:60px 22px}
   .gallery{grid-template-columns:1fr 1fr}
   .contact-grid{grid-template-columns:1fr;gap:44px}
 }

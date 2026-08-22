@@ -129,6 +129,24 @@ if(gEls.length){
   update();
 })();
 
+/* ============ FLOATING BADGE DETAIL (tap-to-toggle na touch uređajima, hover/focus rade preko CSS-a) ============ */
+(function(){
+  const badges=[...document.querySelectorAll('.fbadge[data-detail]')];
+  if(!badges.length)return;
+  badges.forEach(b=>{
+    b.setAttribute('tabindex','0');
+    b.addEventListener('click',()=>{
+      if(matchMedia('(hover: hover)').matches)return;
+      const wasOpen=b.classList.contains('show-detail');
+      badges.forEach(o=>o.classList.remove('show-detail'));
+      if(!wasOpen)b.classList.add('show-detail');
+    });
+  });
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('.fbadge'))badges.forEach(b=>b.classList.remove('show-detail'));
+  });
+})();
+
 /* ============ CTA BACKGROUND ROTATOR (Osmislimo vaš prostor - crossfade kroz nekoliko enterijera) ============ */
 (function(){
   const pool=[
