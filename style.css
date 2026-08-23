@@ -124,6 +124,12 @@ h1,h2,h3,h4{font-weight:300;line-height:1.04;letter-spacing:.005em}
 
 /* collections / grid with caption BELOW */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;transition:opacity .28s var(--ease)}
+@media(min-width:1001px){
+  .grid3.pgrid{grid-template-columns:repeat(4,1fr);gap:22px}
+  .grid3.pgrid .tile .ph{aspect-ratio:1/1}
+  .grid3.pgrid .tile .cap{padding-top:16px;margin-top:14px}
+  .grid3.pgrid .tile .cap h3{font-size:.95rem}
+}
 .grid3.fading{opacity:0}
 .tile{cursor:pointer}
 .grid3 .tile,.grid2 .tile{transition:opacity .5s var(--ease),filter .5s var(--ease)}
