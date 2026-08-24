@@ -337,8 +337,13 @@ html[lang="en"] .proj-item .ph::after{content:'View project →'}
 .section{padding-top:110px;padding-bottom:110px}
 .narrow{max-width:820px;margin:0 auto}
 .prose p{font-size:16px;color:var(--muted);font-weight:300;margin-bottom:22px;line-height:1.85}
-.prose p.lead{font-size:20px;color:var(--ink);font-weight:300;line-height:1.6}
+.prose p.lead{font-size:20px;color:var(--ink);font-weight:400;line-height:1.6;margin-bottom:30px}
 .prose h2{font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:14px 0 26px}
+.prose .eyebrow{display:block;margin-bottom:20px}
+.section.sketch{position:relative;overflow:hidden}
+.section.sketch .sketch-bg{position:absolute;top:50%;right:0;transform:translateY(-50%);width:36%;max-width:460px;opacity:.08;mix-blend-mode:multiply;z-index:-1;pointer-events:none}
+.section.sketch .wrap{position:relative;z-index:1}
+@media(max-width:900px){.section.sketch .sketch-bg{width:70%;right:-10%;opacity:.06}}
 
 /* vrh uslužnih stranica (usluge, kuhinje, ormari, kupaonice, komode, predsoblja) — bez hero slike, jer se kontekst već zna iz navigacije */
 .svc-top{padding-top:168px;padding-bottom:64px}
