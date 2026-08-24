@@ -129,6 +129,10 @@ h1,h2,h3,h4{font-weight:600;line-height:1.04;letter-spacing:.005em}
   .grid3.pgrid .tile .ph{aspect-ratio:1/1}
   .grid3.pgrid .tile .cap{padding-top:16px;margin-top:14px}
   .grid3.pgrid .tile .cap h3{font-size:.95rem}
+  .grid3.sgrid{max-width:900px;margin:0 auto;gap:20px}
+  .grid3.sgrid .tile .ph{aspect-ratio:5/4}
+  .grid3.sgrid .tile .cap{padding-top:16px;margin-top:14px}
+  .grid3.sgrid .tile .cap h3{font-size:1rem}
 }
 .grid3.fading{opacity:0}
 .tile{cursor:pointer}
